@@ -5,6 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="All good stuffs">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!-- Comment #1: OG Tags -->
+<meta property="og:url"           content="http://www.sibuchat.com" />
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="SibuChat" />
+<meta property="og:description"   content="All good stuffs" />
+<meta property="og:image"         content="http://www.sibuchat.com/Socially.png" />
 <title>SibuChat</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -182,9 +188,10 @@ body
                                 </div>
                                 <div class="tab-pane active" role="tabpanel" id="tab_chatroom">
                                         <div id="divWarningMessages" class="card-subtitle text-gray text-center" style="padding:10px;margin-bottom:10px;">
-                                            Be Careful not to disclose your personal info at public chat room.
+                                            Becareful not to disclose your personal info at public chat room.
                                         </div>
                                         <div class="fb-comments" data-href="http://sibuchat.com" data-width="100%" data-numposts="100"></div>
+                                        <div class="fb-page" data-href="https://www.facebook.com/SibuChat" data-tabs="timeline" data-width="360" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/SibuChat" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SibuChat">SibuChat</a></blockquote></div>
                                         <!--div id="tlkio" data-channel="SibuChat" data-theme="theme--day" style="width:100%;height:400px;background-color:#ECECEC;"></div>
                                         <script async src="http://tlk.io/embed.js" type="text/javascript"></script>
                                         <p class="text-center">Powered By <a href="#">tlk.io</a></p-->
@@ -215,9 +222,13 @@ body
 #divWarningMessages
 {
     font-size: 10px;
+    font-weight: bold;
     color: red;
+    background-color:#f7d9de;
 }
 </style>
+<!-- Comment #4: Plugin Code -->
+<div class="fb-quote"></div>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
