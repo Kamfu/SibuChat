@@ -2,7 +2,7 @@
   "name": "SibuChat",
   "short_name": "All good stuff",
   "start_url": ".",
-  "display": "minimal-ui",
+  "display": "standalone",
   "background_color": "#5755d9",
   "description": "All good stuff in town",
   "icons": [{
