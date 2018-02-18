@@ -1,10 +1,10 @@
 {
-  "name": "Socially",
-  "short_name": "Socially daily funny videos",
+  "name": "SibuChat",
+  "short_name": "All good stuff",
   "start_url": ".",
-  "display": "fullscreen",
+  "display": "minimal-ui",
   "background_color": "#5755d9",
-  "description": "When social influencer meet social enterprise",
+  "description": "All good stuff in town",
   "icons": [{
     "src": "img/touch/socially48.png",
     "sizes": "48x48",
