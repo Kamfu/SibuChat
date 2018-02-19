@@ -22,16 +22,15 @@
 <style>
 html
 {
-    background-color: #282828;
+    background-color: #292F33;
     min-width: 320px;
     max-width: 100%;
     margin: 0 auto;
 }
 body
 {
-    background-color: #282828;
-    color: #FFF;
-    font-size: 0.7rem;
+    background-color: #292F33;
+    font-size: 0.6rem;
 }
 #ytplayer
 {
@@ -46,6 +45,10 @@ body
 {
     padding: 0px;
 }
+.p-10
+{
+    padding: 10px;
+}
 .timeline-item .title
 {
     font-weight: bold;
@@ -56,11 +59,15 @@ body
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
-    background-color: #282828;
+    background-color: #292F33;
 }
 .bg_white
 {
-    background: #282828;
+    background: #ECECEC;
+}
+.bg_dark
+{
+    background: #292F33;
 }
 .video-responsive
 {
@@ -81,9 +88,52 @@ body
 {
     display: block;
 }
-.text-theme-color-default
+.timeline-content > p
+{
+    color: #ECECEC;
+}
+.text-theme-color-default,
+.tab.tab-block .tab-item a
 {
     color: #FFF;
+    font-weight: bold;
+}
+.tab.tab-block .tab-item.active a span,
+.tab.tab-block .tab-item.active a
+{
+    color: #5755d9;
+}
+
+.h-100
+{
+    height: 100%;
+}
+.timeline
+{
+    padding: 10px;
+}
+.comments-container
+{
+    height: 600px;
+    display: block;
+    padding: 5px;
+    background-color:#ECECEC;
+}
+#divWarningMessages
+{
+    display: none;
+    color: red;
+    font-size: 10px;
+    font-weight: bold;
+    background-color:#f7d9de;
+}
+.tleft
+{
+    text-align: left !important;
+}
+.tright
+{
+    text-align: right !important;
 }
 </style>
 </head>
@@ -94,7 +144,7 @@ body
             <div class="container-fluid">
                 <div class="columns">
                     <div class="column col-12 p-0">
-                            <ul class="tab tab-block" id="a_tab">
+                        <ul class="tab tab-block" id="a_tab">
                               <li class="tab-item active" id="a_tar_funny">
                                 <a href="javascript:void(0);">
                                         <span class="fa-lg fa-fw text-theme-color-default">
@@ -122,12 +172,20 @@ body
                               <li class="tab-item" id="a_tar_vlog">
                                 <a href="javascript:void(0);">
                                         <span class="fa-lg fa-fw text-theme-color-default">
-                                            <i class="fas fa-play" data-fa-transform="shrink-8"></i>
+                                            <i class="fas fa-users" data-fa-transform="shrink-8"></i>
                                         </span>
                                         Vlog
                                 </a>
                               </li>
-                            </ul>
+                              <li class="tab-item tleft" id="a_tar_live">
+                                <a href="javascript:void(0);">
+                                        <span class="fa-lg fa-fw text-theme-color-default">
+                                            <i class="fas fa-play" data-fa-transform="shrink-8"></i>
+                                        </span>
+                                        Live
+                                </a>
+                              </li>
+                        </ul>
                     </div>
                     <div class="column col-12 video-responsive">
                         <iframe id="ytplayer" type="text/html" width="720" height="405" frameborder="0" allowfullscreen src="javascript:;" ></iframe>
@@ -139,71 +197,87 @@ body
             <div class="container-fluid">
                 <div class="columns">
                     <div class="column col-12 p-0">
-                            <ul class="tab tab-block" id="b_tab">
-                              <li class="tab-item">
-                                <a data-href="tab_about" href="javascript:void(0);">
-                                        <span class="fa-layers fa-lg fa-fw" style="color:#5755d9;">
-                                        <i class="fas fa-video"></i>
-                                        <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-6 top-2 left-3 rotate--15" style="font-weight:900">S</span>
+                            <div style="overflow-x:auto;">
+                                <ul class="tab tab-block" id="b_tab">
+                                  <li class="tab-item active">
+                                    <a data-href="tab_chatroom" href="javascript:void(0);">
+                                        <span class="fa-lg fa-fw text-theme-color-default">
+                                            <i class="fas fa-comment-alt" data-fa-transform="shrink-8"></i>
                                         </span>
-                                </a>
-                              </li>
-                              <li class="tab-item active">
-                                <a data-href="tab_chatroom" href="javascript:void(0);">
-                                    <span class="fa-lg fa-fw text-theme-color-default">
-                                        <i class="fas fa-comment-alt" data-fa-transform="shrink-8"></i>
-                                    </span>
-                                    Chat
-                                </a>
-                              </li>
-                              <li class="tab-item">
-                                <a data-href="tab_news" href="javascript:void(0);">
-                                    <span class="fa-lg fa-fw text-theme-color-default">
-                                        <i class="fas fa-newspaper" data-fa-transform="shrink-8"></i>
-                                    </span>
-                                    News
-                                </a>
-                              </li>
-                              <li class="tab-item">
-                                <a data-href="tab_events" href="javascript:void(0);">
-                                    <span class="fa-lg fa-fw text-theme-color-default">
-                                        <i class="fas fa-calendar" data-fa-transform="shrink-8"></i>
-                                    </span>
-                                    Events
-                                </a>
-                              </li>
-                            </ul>
+                                        Chat
+                                    </a>
+                                  </li>
+                                  <li class="tab-item">
+                                    <a data-href="tab_news" href="javascript:void(0);">
+                                        <span class="fa-lg fa-fw text-theme-color-default">
+                                            <i class="fas fa-newspaper" data-fa-transform="shrink-8"></i>
+                                        </span>
+                                        News
+                                    </a>
+                                  </li>
+                                  <li class="tab-item">
+                                    <a data-href="tab_about" href="javascript:void(0);">
+                                        <span class="fa-layers fa-lg" style="color:#5755d9;">
+                                            <i class="fas fa-video"></i>
+                                            <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-6 top-2 left-3 rotate--15" style="font-weight:900">S</span>
+                                        </span>
+                                    </a>
+                                  </li>
+                                  <li class="tab-item">
+                                    <a data-href="tab_promo" href="javascript:void(0);">
+                                        <span class="fa-lg fa-fw text-theme-color-default">
+                                            <i class="fas fa-bookmark" data-fa-transform="shrink-8"></i>
+                                        </span>
+                                        Promo
+                                    </a>
+                                  </li>
+                                  <li class="tab-item tleft">
+                                    <a data-href="tab_events" href="javascript:void(0);">
+                                        <span class="fa-lg fa-fw text-theme-color-default">
+                                            <i class="fas fa-calendar" data-fa-transform="shrink-8"></i>
+                                        </span>
+                                        Events
+                                    </a>
+                                  </li>
+                                </ul>
+                            </div>
                             <div class="tab-content">
                                 <div class="tab-pane text-center" role="tabpanel" id="tab_about">
                                         <br/>
-                                        <h3 class="text-center">About SibuChat</h3>
-                                        <a class="btn btn-primary mb-1 br-1" href="//facebook.com/groups/SibuChat">Facebook Group</a>
-                                        <a class="btn btn-primary mb-1 br-1" href="//fb.me/SibuChat">Facebook Page</a>
-                                        <a class="btn btn-primary mb-1 br-1" href="//m.me/SibuChat">Suggest Youtube Channel</a>
-                                        <a class="btn btn-primary mb-1 br-1" href="mailto:SibuChat@groups.facebook.com">Email</a>
-                                        <a class="btn btn-primary mb-1 br-1" href="javascript:;">Donate</a>
-                                        <h3 class="text-center">Contributors</h3>
-                                        <div class="timeline" id="divContributorsList"></div>
-                                        <p class="text-center">Discover hidden local talents <a href="//www.socially.my/">Socially.my</a></p>
+                                        <h3 class="text-center">About Us</h3>
+                                        <p class="text-center p-10">SibuChat is a site that aggregate all related topics and good stuff by editors and autobots.</p>
+                                        <a class="btn btn-primary btn-block mb-1 br-1" href="//facebook.com/groups/SibuChat">Suggest Good Stuff</a>
+                                        <a class="btn btn-primary btn-block mb-1 br-1" href="//fb.me/SibuChat">Offical Announcement</a>
+                                        <a class="btn btn-primary btn-block mb-1 br-1" href="//m.me/SibuChat">Join Us</a>
+                                        <br/><br/><br/><br/><br/>
+                                        <!--h3 class="text-center">Contributors</h3>
+                                        <div class="timeline" id="divContributorsList"></div-->
+                                        <!--p class="text-center">Discover hidden local talents <a href="//www.socially.my/">Socially.my</a></p-->
                                 </div>
                                 <div class="tab-pane active" role="tabpanel" id="tab_chatroom">
                                         <div id="divWarningMessages" class="card-subtitle text-gray text-center" style="padding:10px;margin-bottom:10px;">
                                             Becareful not to disclose your personal info at public chat room.
                                         </div>
-                                        <div class="fb-comments" data-href="http://sibuchat.com" data-width="100%" data-numposts="100"></div>
-                                        <div class="fb-page" data-href="https://www.facebook.com/SibuChat" data-tabs="timeline" data-width="360" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/SibuChat" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SibuChat">SibuChat</a></blockquote></div>
-                                        <!--div id="tlkio" data-channel="SibuChat" data-theme="theme--day" style="width:100%;height:400px;background-color:#ECECEC;"></div>
-                                        <script async src="http://tlk.io/embed.js" type="text/javascript"></script>
-                                        <p class="text-center">Powered By <a href="#">tlk.io</a></p-->
-                                        <!--iframe src="https://discordapp.com/widget?id=414840477456793602&theme=dark" width="100%" height="300" allowtransparency="true" frameborder="0"></iframe-->
+                                        <div class="comments-container">
+                                            <div class="fb-comments" data-href="http://sibuchat.com" data-width="100%" data-numposts="100"></div>
+                                            <!--div id="tlkio" data-channel="SibuChat" data-theme="theme--day" style="width:100%;height:400px;background-color:#ECECEC;"></div>
+                                            <script async src="http://tlk.io/embed.js" type="text/javascript"></script>
+                                            <p class="text-center">Powered By <a href="#">tlk.io</a></p-->
+                                            <!--iframe src="https://discordapp.com/widget?id=414840477456793602&theme=dark" width="100%" height="300" allowtransparency="true" frameborder="0"></iframe-->
+                                        </div>
                                 </div>
-                                <div class="tab-pane" role="tabpanel" id="tab_news">
-                                        <div class="timeline" id="divNewsList"></div>
-                                        <p class="text-center">Best promo in town <a href="//host.kamfu.org/localarm/">LocalARM</a></p>
+                                <div class="tab-pane bg_dark" role="tabpanel" id="tab_news" style="padding: 0px 8px;">
+                                        <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/Kamfu_org/lists/sibuchat-news?ref_src=twsrc%5Etfw">A Twitter List by Kamfu_org</a>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="tab_promo">
+                                        <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/Kamfu_org/lists/sibuchat-promo?ref_src=twsrc%5Etfw">A Twitter List by Kamfu_org</a>
+                                        <!--div class="timeline" id="divPromoList"></div-->
+                                        <!--p class="text-center">Best promo in town <a href="//host.kamfu.org/localarm/">LocalARM</a></p-->
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="tab_events">
-                                        <div class="timeline" id="divEventList"></div>
-                                        <p class="text-center">Discover excited events in town <a href="//www.mingles.asia/">Mingles.Asia</a></p>
+                                        <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/Kamfu_org/lists/sibuchat-events?ref_src=twsrc%5Etfw">A Twitter List by Kamfu_org</a>
+                                        <!--div class="timeline" id="divEventList"></div-->
+                                        <!--p class="text-center">Discover excited events in town <a href="//www.mingles.asia/">Mingles.Asia</a></p-->
                                 </div>
                             </div>
                     </div>
@@ -211,22 +285,6 @@ body
             </div><!-- end of container grid-lg -->
     </div>
 </div>
-<style>
-.fb-comments
-{
-    height:100%;
-    display: block;
-    padding: 5px;
-    background-color:#ECECEC;
-}
-#divWarningMessages
-{
-    font-size: 10px;
-    font-weight: bold;
-    color: red;
-    background-color:#f7d9de;
-}
-</style>
 <!-- Comment #4: Plugin Code -->
 <div class="fb-quote"></div>
 <div id="fb-root"></div>
@@ -237,6 +295,7 @@ body
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=297891163584590&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -245,12 +304,11 @@ $(document).ready(function(){
         $('#a_tar_funny').click();
     }, 2000);
     setTimeout(function(){
-        renderNewsList();
+        renderListUI();
     }, 500);
     setTimeout(function(){
         $('#divWarningMessages').fadeOut();
     },15000);
-    
     $('#a_tar_funny').click(function(){
         $('#ytplayer').attr('src','https://www.youtube.com/embed/?autoplay=1&enablejsapi=0&modestbranding=1&playsinline=1&rel=0&color=white&listType=playlist&list=PLakjSYqAw2l3L_crbipge1tMN5Z4RPt-X');
     });
@@ -262,6 +320,9 @@ $(document).ready(function(){
     });
     $('#a_tar_vlog').click(function(){
         $('#ytplayer').attr('src','https://www.youtube.com/embed/?autoplay=1&enablejsapi=0&modestbranding=1&playsinline=1&rel=0&color=white&listType=playlist&list=PLakjSYqAw2l2dmH9ffFG4QtYT9mDpRvpH');
+    });
+    $('#a_tar_live').click(function(){
+        $('#ytplayer').attr('src','http://player.twitch.tv/?channel=avajaijai&autoplay=true');
     });
     
     $('ul#a_tab > li').click(function(){
@@ -304,7 +365,7 @@ $(document).ready(function(){
         }
     });
 });
-function renderNewsList()
+function renderListUI()
 {
     // https://docs.google.com/spreadsheets/d/1mCJDCqYr8aZnuEVPDNx2LmtVrw6d_dUn23kzUNZX3RE/
     // ID of the Google Spreadsheet
@@ -332,13 +393,18 @@ function renderNewsList()
                 constructedhtml += '<p>'+postSummary+'</p>';
                 if( postFullLink != '' )
                 {
-                    constructedhtml += '<a href="'+postFullLink+'">Read more</a>';
+                    constructedhtml += '<a href="'+postFullLink+'">Go to</a>';
                 }
                 constructedhtml += '</div></div>';
                 if( postType == 'News' )
                 {
                     console.log('News');
                     jQuery('#divNewsList').append(constructedhtml);
+                }
+                if( postType == 'Promo' ) // Promo
+                {
+                    console.log('Promo');
+                    jQuery('#divPromoList').append(constructedhtml);
                 }
                 if( postType == 'Event' )
                 {
