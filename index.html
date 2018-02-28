@@ -118,6 +118,16 @@ body
     display: block;
     padding: 5px;
     background-color:#ECECEC;
+    position: relative;
+}
+.comments-container .footerFix
+{
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    padding: 2px;
+    background: #131313;
 }
 #divWarningMessages
 {
@@ -177,14 +187,14 @@ body
                                         Vlog
                                 </a>
                               </li>
-                              <li class="tab-item tleft" id="a_tar_live">
+                              <!--li class="tab-item tleft" id="a_tar_live">
                                 <a href="javascript:void(0);">
                                         <span class="fa-lg fa-fw text-theme-color-default">
                                             <i class="fas fa-play" data-fa-transform="shrink-8"></i>
                                         </span>
                                         Live
                                 </a>
-                              </li>
+                              </li-->
                         </ul>
                     </div>
                     <div class="column col-12 video-responsive">
@@ -223,7 +233,7 @@ body
                                         </span>
                                     </a>
                                   </li>
-                                  <li class="tab-item">
+                                  <li class="tab-item tleft">
                                     <a data-href="tab_promo" href="javascript:void(0);">
                                         <span class="fa-lg fa-fw text-theme-color-default">
                                             <i class="fas fa-bookmark" data-fa-transform="shrink-8"></i>
@@ -245,7 +255,7 @@ body
                                 <div class="tab-pane text-center" role="tabpanel" id="tab_about">
                                         <br/>
                                         <h3 class="text-center">About Us</h3>
-                                        <p class="text-center p-10">SibuChat is a site that aggregate all related topics and good stuff by editors and autobots.</p>
+                                        <p class="text-center p-10">SibuChat is a site that help content creators to know what topics and stuff their are like.</p>
                                         <a class="btn btn-primary btn-block mb-1 br-1" href="//facebook.com/groups/SibuChat">Suggest Good Stuff</a>
                                         <a class="btn btn-primary btn-block mb-1 br-1" href="//fb.me/SibuChat">Offical Announcement</a>
                                         <a class="btn btn-primary btn-block mb-1 br-1" href="//m.me/SibuChat">Join Us</a>
@@ -260,10 +270,9 @@ body
                                         </div>
                                         <div class="comments-container">
                                             <div class="fb-comments" data-href="http://sibuchat.com" data-width="100%" data-numposts="100"></div>
-                                            <!--div id="tlkio" data-channel="SibuChat" data-theme="theme--day" style="width:100%;height:400px;background-color:#ECECEC;"></div>
-                                            <script async src="http://tlk.io/embed.js" type="text/javascript"></script>
-                                            <p class="text-center">Powered By <a href="#">tlk.io</a></p-->
-                                            <!--iframe src="https://discordapp.com/widget?id=414840477456793602&theme=dark" width="100%" height="300" allowtransparency="true" frameborder="0"></iframe-->
+                                            <div class="footerFix">
+                                                <a class="btn btn-primary btn-block mb-1 br-1" href="//facebook.com/groups/SibuChat">Answer the Poll, let us know what you like.</a>
+                                            </div>
                                         </div>
                                 </div>
                                 <div class="tab-pane bg_dark" role="tabpanel" id="tab_news" style="padding: 0px 8px;">
