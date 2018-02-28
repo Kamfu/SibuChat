@@ -59,7 +59,7 @@ body
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
-    background-color: #292F33;
+    background-color: #131313;
 }
 .bg_white
 {
@@ -122,12 +122,18 @@ body
 }
 .comments-container .footerFix
 {
+    z-index: 9999;
     width: 100%;
     position: fixed;
     bottom: 0px;
     left: 0px;
-    padding: 2px;
+    padding: 10px;
     background: #131313;
+}
+.comments-container .footerFix a
+{
+    line-height: 50px;
+    height: 60px;
 }
 #divWarningMessages
 {
@@ -255,7 +261,7 @@ body
                                 <div class="tab-pane text-center" role="tabpanel" id="tab_about">
                                         <br/>
                                         <h3 class="text-center">About Us</h3>
-                                        <p class="text-center p-10">SibuChat is a site that help content creators to know what topics and stuff their are like.</p>
+                                        <p class="text-center p-10">SibuChat is a site that help content creators to know what topics and stuff their are prefer :D</p>
                                         <a class="btn btn-primary btn-block mb-1 br-1" href="//facebook.com/groups/SibuChat">Suggest Good Stuff</a>
                                         <a class="btn btn-primary btn-block mb-1 br-1" href="//fb.me/SibuChat">Offical Announcement</a>
                                         <a class="btn btn-primary btn-block mb-1 br-1" href="//m.me/SibuChat">Join Us</a>
@@ -271,7 +277,7 @@ body
                                         <div class="comments-container">
                                             <div class="fb-comments" data-href="http://sibuchat.com" data-width="100%" data-numposts="100"></div>
                                             <div class="footerFix">
-                                                <a class="btn btn-primary btn-block mb-1 br-1" href="//facebook.com/groups/SibuChat">Answer the Poll, let us know what you like.</a>
+                                                <a class="btn btn-primary btn-block mb-1 br-1" href="//facebook.com/groups/SibuChat">Answer the Poll, let us know what you like :D</a>
                                             </div>
                                         </div>
                                 </div>
@@ -309,6 +315,10 @@ body
 <script type="text/javascript">
 $(document).ready(function(){
     // Initial
+    if( isMobileDevice() === false )
+    {
+        $('.video-responsive').css("margin-top","120px");
+    }
     setTimeout(function(){
         $('#a_tar_funny').click();
     }, 2000);
@@ -424,6 +434,9 @@ function renderListUI()
         });
     });
 }
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
 </script>
 </body>
 </html>
