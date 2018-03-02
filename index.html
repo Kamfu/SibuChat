@@ -17,8 +17,6 @@
 <link rel="stylesheet" href="css/spectre.min.css">
 <link rel="stylesheet" href="css/spectre-exp.min.css">
 <link rel="stylesheet" href="svg-with-js/css/fa-svg-with-js.css">
-<script defer src="svg-with-js/js/fontawesome-all.min.js"></script>
-<script defer src="svg-with-js/js/fa-regular.min.js"></script>
 <style>
 html
 {
@@ -82,6 +80,11 @@ body
 .tab-content > .tab-pane
 {
     display: none;
+    min-height: 600px;
+    max-height: 600px;
+    overflow-x: auto;
+    position: relative;
+    overflow-y: auto;
 }
 .tab-content > .tab-pane.active
 {
@@ -121,10 +124,11 @@ body
     height: 600px;
     display: block;
     padding: 5px;
+    padding: 5px;
     background-color:#ECECEC;
     position: relative;
 }
-.comments-container .footerFix
+.footerFix
 {
     z-index: 9999;
     width: 100%;
@@ -141,7 +145,7 @@ body
 }
 #divWarningMessages
 {
-    display: none;
+    display: block;
     color: red;
     font-size: 10px;
     font-weight: bold;
@@ -155,7 +159,44 @@ body
 {
     text-align: right !important;
 }
+.red
+{
+    color: #4b48d6;
+}
+/*
+*  STYLE 3
+*/
+.custom-scrollbar::-webkit-scrollbar-track
+{
+-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+background-color: #F5F5F5;
+}
+
+.custom-scrollbar::-webkit-scrollbar
+{
+width: 15px;
+background-color: #F5F5F5;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb
+{
+background-color: #5755d9;
+}
+/*
+ *  STYLE 3 end
+ */
 </style>
+<script defer src="svg-with-js/js/fontawesome-all.min.js"></script>
+<script defer src="svg-with-js/js/fa-regular.min.js"></script>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "deabc5a4-7714-474a-873e-d94db448bebe",
+    });
+  });
+</script>
 </head>
 <body>
 <div class="row columns">
@@ -262,41 +303,74 @@ body
                                 </ul>
                             </div>
                             <div class="tab-content">
-                                <div class="tab-pane text-center" role="tabpanel" id="tab_about">
+                                <div class="tab-pane p-10 custom-scrollbar text-center" role="tabpanel" id="tab_about">
+                                        <!--p class="card-subtitle text-gray text-center">Discover hidden local talents. Powered by <a class="btn btn-primary br-1" href="//www.socially.my/">Socially</a></p-->
                                         <br/>
                                         <h3 class="text-center text-theme-color-default">About Us</h3>
-                                        <p class="text-center p-10 text-theme-color-default">SibuChat is a site that help content creators to know what topics and stuff their audience are prefer :D</p>
+                                        <p class="text-center p-10 text-theme-color-default"><span class="red">S</span>ocial <span class="red">I</span>nfluencer meets <span class="red">B</span>rands Experience and <span class="red">U</span>ser Experience</p>
+                                        <p class="text-center p-10 text-theme-color-default">SibuChat helps content creators understand what their audience preference. :D</p>
                                         <a class="btn btn-primary btn-block mb-1 br-1" href="//facebook.com/groups/SibuChat">Suggest Good Stuff</a>
                                         <a class="btn btn-primary btn-block mb-1 br-1" href="//fb.me/SibuChat">Offical Announcement</a>
                                         <a class="btn btn-primary btn-block mb-1 br-1" href="//m.me/SibuChat">Join Us</a>
                                         <br/><br/><br/><br/><br/>
                                         <!--h3 class="text-center">Contributors</h3>
                                         <div class="timeline" id="divContributorsList"></div-->
-                                        <!--p class="text-center">Discover hidden local talents <a href="//www.socially.my/">Socially.my</a></p-->
+                                        <div class="footerFix text-center">
+                                            <a class="btn btn-primary btn mb-1 br-1" href="//facebook.com/groups/SibuChat">Share to friends</a>
+                                        </div>
                                 </div>
-                                <div class="tab-pane active" role="tabpanel" id="tab_chatroom">
-                                        <div id="divWarningMessages" class="card-subtitle text-gray text-center" style="padding:10px;margin-bottom:10px;">
+                                <div class="tab-pane active custom-scrollbar" role="tabpanel" id="tab_chatroom">
+                                        <div class="card-subtitle text-gray text-center" style="padding:10px;margin-bottom:0px;">
+                                            <!--
+                                            [Monthly Charity]  1 comment, 1 gram of rice for local needs.
+                                            <a class="btn btn-primary br-1" href="//facebook.com/groups/SibuChat">Watch</a>
+                                            -->
+                                            <!-- // FoodHero, 1kg = RM12, when comment hastag the #foodhero, stay change to win the cash vouncher -->
+                                            <!--- //  -->
+                                        </div>
+                                        <div id="divWarningMessages" class="card-subtitle text-gray text-center" style="padding:10px;margin-bottom:0px;">
                                             Becareful not to disclose your personal info at public chat room.
                                         </div>
                                         <div class="comments-container">
                                             <div class="fb-comments" data-href="http://sibuchat.com" data-width="100%" data-numposts="100"></div>
                                             <div class="footerFix text-center">
-                                                <a class="btn btn-primary btn mb-1 br-1" href="//facebook.com/groups/SibuChat">Answer the Poll :D</a>
+                                                <a class="btn btn-primary mb-1 br-1" href="//facebook.com/groups/SibuChat">Suggest Video</a>
+                                                <a class="btn btn-danger mb-1 br-1" href="//facebook.com/groups/SibuChat">Answer the Poll :D</a>
                                             </div>
                                         </div>
                                 </div>
-                                <div class="tab-pane bg_dark p-10" role="tabpanel" id="tab_news">
+                                <div class="tab-pane bg_dark p-10 custom-scrollbar" role="tabpanel" id="tab_news">
+                                        <!--
+                                        <p class="card-subtitle text-gray text-center">Interesting topics or content? <a class="btn btn-primary br-1" href="//host.kamfu.org/SibuChat/">Contact Us</a></p>
+                                        -->
                                         <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/Kamfu_org/lists/sibuchat-news?ref_src=twsrc%5Etfw"></a>
+                                        <div class="footerFix text-center">
+                                            <a class="btn btn-primary btn mb-1 br-1" href="//facebook.com/groups/SibuChat">Answer the Poll :D2</a>
+                                        </div>
                                 </div>
-                                <div class="tab-pane bg_dark p-10" role="tabpanel" id="tab_promo">
+                                <div class="tab-pane bg_dark p-10 custom-scrollbar" role="tabpanel" id="tab_promo">
+                                        <!--
+                                        <p class="card-subtitle text-gray text-center">Top 5 best promo in town. Powered by <a class="btn btn-primary br-1" href="//host.kamfu.org/localarm/">LocalARM</a></p>
+                                        -->
+                                        <div class="timeline" id="divPromoList"></div>
                                         <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/Kamfu_org/lists/sibuchat-promo?ref_src=twsrc%5Etfw"></a>
-                                        <!--div class="timeline" id="divPromoList"></div-->
-                                        <!--p class="text-center">Best promo in town <a href="//host.kamfu.org/localarm/">LocalARM</a></p-->
+                                        <div class="footerFix text-center">
+                                            <a class="btn btn-primary btn mb-1 br-1" href="//facebook.com/groups/SibuChat">D4</a>
+                                            <a class="btn btn-primary btn mb-1 br-1" href="//facebook.com/groups/SibuChat">D4</a>
+                                            <a class="btn btn-primary btn mb-1 br-1" href="//facebook.com/groups/SibuChat">D4</a>
+                                            <a class="btn btn-primary btn mb-1 br-1" href="//facebook.com/groups/SibuChat">D4</a>
+                                            <a class="btn btn-primary btn mb-1 br-1" href="//facebook.com/groups/SibuChat">D4</a>
+                                        </div>
                                 </div>
-                                <div class="tab-pane bg_dark p-10" role="tabpanel" id="tab_events">
+                                <div class="tab-pane bg_dark p-10 custom-scrollbar" role="tabpanel" id="tab_events">
+                                        <!--
+                                        <p class="card-subtitle text-gray text-center">Discover excited events in town. Powered by <a class="btn btn-primary br-1" href="//www.mingles.asia/">Mingles.Asia</a></p>
+                                        -->
+                                        <div class="timeline" id="divEventList"></div>
                                         <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/Kamfu_org/lists/sibuchat-events?ref_src=twsrc%5Etfw"></a>
-                                        <!--div class="timeline" id="divEventList"></div-->
-                                        <!--p class="text-center">Discover excited events in town <a href="//www.mingles.asia/">Mingles.Asia</a></p-->
+                                        <div class="footerFix text-center">
+                                            <a class="btn btn-primary btn mb-1 br-1" href="//facebook.com/groups/SibuChat">Answer the Poll :D5</a>
+                                        </div>
                                 </div>
                             </div>
                     </div>
