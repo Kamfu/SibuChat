@@ -186,17 +186,22 @@ background-color: #5755d9;
  *  STYLE 3 end
  */
 </style>
-<script defer src="svg-with-js/js/fontawesome-all.min.js"></script>
-<script defer src="svg-with-js/js/fa-regular.min.js"></script>
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
   var OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
     OneSignal.init({
       appId: "deabc5a4-7714-474a-873e-d94db448bebe",
+      allowLocalhostAsSecureOrigin: true,
+      autoRegister: false,
+      notifyButton: {
+        enable: true,
+      },
     });
   });
 </script>
+<script defer src="svg-with-js/js/fontawesome-all.min.js"></script>
+<script defer src="svg-with-js/js/fa-regular.min.js"></script>
 </head>
 <body>
 <div class="row columns">
